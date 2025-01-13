@@ -33,6 +33,9 @@ def upload_file():
         # Ejecutar el script sara.py con el archivo subido como argumento
         result = run_sara(filepath)
 
+        # Eliminar el archivo después de analizarlo
+        os.remove(filepath)
+
         # Mostrar el resultado de la auditoría
         return render_template('upload.html', result=result)
 
@@ -46,4 +49,3 @@ def run_sara(config_file):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
-
